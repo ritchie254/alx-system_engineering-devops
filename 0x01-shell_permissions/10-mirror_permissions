@@ -1,2 +1,2 @@
 #!/bin/bash
-set_mode elloh hello
+chmod --reference=olleh hello
