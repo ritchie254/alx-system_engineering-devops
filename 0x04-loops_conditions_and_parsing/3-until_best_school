@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #until loop used to print best school
 i=0
-until [[ $i -eq 9 ]]; do
+until [ $i -eq 9 ]; do
 	echo "Best School"
 	((i++))
 done
