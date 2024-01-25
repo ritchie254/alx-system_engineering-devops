@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#using while loop together with an if condition
+i=0
+while [ $i -lt 9 ]; do
+	if [ $i -eq 8 ]; then
+		echo "Best School"
+		echo "Hi"
+	fi
+	echo "Best School"
+	((i++))
+done
