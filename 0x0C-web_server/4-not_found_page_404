@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# installs nginx to my serve
+
+echo -e "Updat8ng and installing nginx\n"
+sudo apt-get -y update -qq && \
+	     sudo apt-get -y install nginx
+echo -e "\nsetting up some config\n"
+sudo service nginx start
+# allow8ng nginx on firewall
+sudo ufw allow "Nginx HTTP"
+
+# giving user ownership and permision to edit files
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+
+cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
+
+echo -e "Hello World!" | dd  status=none of=/var/www/html/index.nginx-debian.html
+
+#redirecting to link permently
+sudo sed -i '24i\       rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+
+# Set up a 404 page
+echo "Ceci n'est pas une page" >> /var/www/html/error_404.html
+sudo sed -i '25i\	error_page 404 /error_404.html;' /etc/nginx/sites-available/default
+
+sudo service nginx restart
+
+echo -e "\n completed....\n"
