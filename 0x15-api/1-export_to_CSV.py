@@ -2,7 +2,6 @@
 """
 script to fetch api information
 """
-import csv
 import requests
 import sys
 
@@ -16,13 +15,15 @@ if __name__ == "__main__":
         id = int(sys.argv[1])
         req = requests.get("{}/todos/".format(api))
         user = requests.get("{}/users/{}".format(api, id)).json()
+        todos = list(filter(lambda x: x.get('userId') == id, req.json()))
         file_name = "{}.csv".format(id)
-        with open(file_name, "w", newline='') as file:
-            f = csv.writer(file)
-            for i in req.json():
-                if i.get("userId") == id:
-                    name = user.get("name")
-                    task = i.get("completed")
-                    title = i.get("title")
-                    all_f = [id, name, task, title]
-                    f.writerow(all_f)
+        with open(file_name, "w") as file:
+            for i in todos:
+                file.write(
+                        '"{}","{}","{}","{}"\n'.format(
+                            id,
+                            user.get("name"),
+                            i.get("completed"),
+                            i.get("title")
+                            )
+                        )
