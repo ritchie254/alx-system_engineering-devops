@@ -24,7 +24,7 @@ if __name__ == "__main__":
                 if i.get("completed"):
                     score += 1
                     all_list.append(i.get("title"))
-    hello = "Employee {} is done with tasks ({}/{})"
+    hello = "Employee {} is done with tasks({}/{}):"
     print(hello.format(user.get("name"), score, all_s))
     for i in all_list:
         print("\t{}".format(i))
