@@ -6,12 +6,12 @@ import sys
 api = "https://jsonplaceholder.typicode.com"
 if __name__ == "__main__":
     score = 0
-    id = int(sys.argv[1])
     all_s = 0
     all_list = []
-    req = requests.get("{}/todos/".format(api))
-    user = requests.get("{}/users/{}".format(api, id)).json()
     if len(sys.argv) > 1:
+        id = int(sys.argv[1])
+        req = requests.get("{}/todos/".format(api))
+        user = requests.get("{}/users/{}".format(api, id)).json()
         for i in req.json():
             if i.get("userId") == id:
                 all_s += 1
