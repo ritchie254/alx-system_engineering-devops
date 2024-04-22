@@ -1,9 +1,15 @@
 #!/usr/bin/python3
+"""
+script to fetch api information
+"""
 
 import requests
 import sys
 
 api = "https://jsonplaceholder.typicode.com"
+"""api url"""
+
+
 if __name__ == "__main__":
     score = 0
     all_s = 0
