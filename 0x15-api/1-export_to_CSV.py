@@ -22,7 +22,7 @@ if __name__ == "__main__":
                 file.write(
                         '"{}","{}","{}","{}"\n'.format(
                             id,
-                            user.get("name"),
+                            user.get("username"),
                             i.get("completed"),
                             i.get("title")
                             )
