@@ -18,12 +18,13 @@ if __name__ == "__main__":
         todos = list(filter(lambda x: x.get('userId') == id, req.json()))
         file_name = "{}.json".format(id)
         with open(file_name, "w") as file:
+            file.write("\"{}\":[".format(id))
             for i in todos:
-                file.write(
-                        '"{}","{}","{}","{}"\n'.format(
-                            id,
-                            user.get("username"),
+                file.writi(
+                        '"task":"{}","completed":"{}","useraname":"{}",'.format(
+                            i.get("title"),
                             i.get("completed"),
-                            i.get("title")
+                            user.get("username")
                             )
                         )
+            file.write("]")
