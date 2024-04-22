@@ -27,4 +27,4 @@ if __name__ == "__main__":
     hello = "Employee {} is done with tasks({}/{}):"
     print(hello.format(user.get("name"), score, all_s))
     for i in all_list:
-        print("\t{}".format(i))
+        print("\t {}".format(i))
